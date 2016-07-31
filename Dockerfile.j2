@@ -25,6 +25,8 @@ RUN mkdir -p /var/log/supervisor \
 RUN mkdir -p /etc/flower /var/flower/db 
 
 COPY flowerconfig.py /etc/flower/flowerconfig.py
+COPY run_flower.sh /etc/flower/run_flower.sh
+RUN chmod +x /etc/flower/run_flower.sh
 
 EXPOSE 5555
 
