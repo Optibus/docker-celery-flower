@@ -13,7 +13,8 @@ RUN rm -rf /var/lib/apt/lists/ \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
-RUN pip3 install flower
+RUN pip3 install celery==4.0.0
+RUN pip3 install flower==0.9.1
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -22,7 +23,7 @@ RUN mkdir -p /var/log/supervisor \
   && chmod g+w /var/log/supervisor \
   && chgrp staff /etc/supervisor/conf.d/supervisord.conf
 
-RUN mkdir -p /etc/flower /var/flower/db 
+RUN mkdir -p /etc/flower /var/flower/db
 
 COPY flowerconfig.py /etc/flower/flowerconfig.py
 COPY run_flower.sh /etc/flower/run_flower.sh
